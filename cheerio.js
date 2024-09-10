@@ -2,7 +2,10 @@ import puppeteer from 'puppeteer';
 
 async function searchForAnimes(searchQuery) {
   // Launch Puppeteer
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({ 
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+   });
   const page = await browser.newPage();
   
   // Navigate to the search page using the search query
@@ -37,9 +40,7 @@ async function searchForAnimes(searchQuery) {
 
 
 
-searchForAnimes("vinland saga").then(result => {
-  console.log(result)
-})
+
 
 
 
