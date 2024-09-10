@@ -37,7 +37,9 @@ async function searchForAnimes(searchQuery) {
 
 
 
-
+searchForAnimes("vinland saga").then(result => {
+  console.log(result)
+})
 
 
 

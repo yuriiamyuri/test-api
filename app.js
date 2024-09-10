@@ -1,11 +1,11 @@
 import express from "express";
-import usersRouter from "./usersRouter.js";
+
 import searchForAnimes from "./cheerio.js";
 const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-app.use("/users", usersRouter);
+
 
 app.get("/", (req, res) => {
   res.json("Hello world");
@@ -29,21 +29,7 @@ app.get('/anime/:anime', (req, res) => {
 
 
 // Admin route handler
-app.get('/dashboard', (req, res, next) => {
-    const isAdmin = req.query.admin === 'true';
-    
-    if (!isAdmin) {
-      next('route');  // Skip this handler if the user is not an admin
-    } else {
-      res.send('Welcome Admin to the dashboard');
-    }
-  });
-  
-  // Regular user route handler
-  app.get('/dashboard', (req, res) => {
-    res.send('Welcome User to the dashboard');
-  });
-  
+
   
 
 
