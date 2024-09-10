@@ -4,7 +4,13 @@ async function searchForAnimes(searchQuery) {
   // Launch Puppeteer
   const browser = await puppeteer.launch({ 
     headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
+    args: [
+      '--no-sandbox',  // Disable sandboxing (good for running in certain environments)
+      '--disable-setuid-sandbox', 
+      '--disable-gpu', // Disable GPU rendering (prevents some UI issues)
+      '--disable-dev-shm-usage', // Prevents crashes in some environments
+      '--window-size=1920,1080' // Optional: Set a window size (even if headless)
+    ]
    });
   const page = await browser.newPage();
   
